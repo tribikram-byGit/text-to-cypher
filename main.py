@@ -6,11 +6,13 @@ from typing import List, Dict, Any, Optional
 from neo4j import GraphDatabase
 from groq import Groq
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+load_dotenv()
 
 # --- CONFIGURATION ---
-NEO4J_URI = "neo4j+ssc://360d05b3.databases.neo4j.io"
-NEO4J_AUTH = ("360d05b3", "pRBvI7D4Sd5fMVEgrCG2kh6UJrOQQhqY3kfuSTNWPek")
-GROQ_API_KEY = "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"
+NEO4J_URI = os.getenv("NEO4J_URI")
+NEO4J_AUTH = ("360d05b3", os.getenv("NEO4J_AUTH"))
+GROQ_API_KEY = os.getenv("SECRET_KEY")
 
 app = FastAPI(
     title="AML Fraud Graph Copilot API",
